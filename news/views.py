@@ -14,6 +14,6 @@ def details_page(request, id):
     context = {
         "title": "Página de Detalhes da Notícia",
         "report": get_news,
-        "categories": get_categories,
+        "categories": get_categories.name,
     }
     return render(request, "news_details.html", context)
