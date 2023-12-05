@@ -4,9 +4,11 @@
 {% block content %}
 {% for card in news %}
 <div>
-    <h2 class="news-title">{{card.title}}</h2>
-    <span class="news-date">{{card.created_at|date:"d/m/Y"}}</span>
-    <img src="{% static card.image.url %}" alt="{{card.title}}" />
+    <a href="{% url 'news-details-page' card.id %}">
+        <h2 class="news-title">{{card.title}}</h2>
+        <span class="news-date">{{card.created_at|date:"d/m/Y"}}</span>
+        <img src="{% static card.image.url %}" alt="{{card.title}}" />
+    </a>
 </div>
 {% endfor %}
 {% endblock %}
