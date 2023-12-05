@@ -5,9 +5,15 @@
 <div>
     <h1 class="news-title">{{report.title}}</h1>
     <p class="news-content">{{report.content}}</p>
-    <span class="news-categories">{{categories}}</span>
+
+    {% for category in report.categories.all %}
+        <span class="news-categories">{{ category.name }}</span>
+    {% endfor %}
+
     <span class="news-author">{{report.author}}</span>
+    {% if report.image %}
     <img src="{% static report.image.url %}" alt="{{report.title}}" />
+    {% endif %}
     <span class="news-date">{{report.created_at|date:"d/m/Y"}}</span>
 </div>
 {% endblock %}

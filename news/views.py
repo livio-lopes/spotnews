@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from news.models import News, Category
+from news.models import News
 
 
 # Create your views here.
@@ -10,10 +10,8 @@ def index(request):
 
 def details_page(request, id):
     get_news = News.objects.get(id=id)
-    get_categories = Category.objects.get(id=get_news.id)
     context = {
         "title": "Página de Detalhes da Notícia",
         "report": get_news,
-        "categories": get_categories.name,
     }
     return render(request, "news_details.html", context)
