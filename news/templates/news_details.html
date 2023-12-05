@@ -5,7 +5,7 @@
 <div>
     <h1 class="news-title">{{report.title}}</h1>
     <p class="news-content">{{report.content}}</p>
-    <span class="news-categories">{{categories}}</span>
+    <span class="news-categories">{{categories.name}}</span>
     <span class="news-author">{{report.author}}</span>
     <img src="{% static report.image.url %}" alt="{{report.title}}" />
     <span class="news-date">{{report.created_at|date:"d/m/Y"}}</span>
