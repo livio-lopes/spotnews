@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from news.models import News
+from django.shortcuts import render, redirect
+from news.models import News, Category
+from news.forms import CreatCategoriesForm
 
 
 # Create your views here.
@@ -15,3 +16,16 @@ def details_page(request, id):
         "report": get_news,
     }
     return render(request, "news_details.html", context)
+
+
+def add_categories(request):
+    form = CreatCategoriesForm()
+
+    if request.method == "POST":
+        form = CreatCategoriesForm(request.POST)
+        if form.is_valid():
+            Category.objects.create(**form.cleaned_data)
+            return redirect("home-page")
+
+    context = {"title": "Formulário para Nova Categoria", "form": form}
+    return render(request, "categories_form.html", context)
